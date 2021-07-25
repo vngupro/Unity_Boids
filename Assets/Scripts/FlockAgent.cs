@@ -5,9 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class FlockAgent : MonoBehaviour
 {
+    Flock agentFlock;
+    public Flock AgentFlock { get { return agentFlock; } }
     Collider2D agentCollider;
     public Collider2D AgentCollider { get => agentCollider; }
 
+    public void Initialize(Flock flock)
+    {
+        agentFlock = flock;
+    } 
     private void Start()
     {
         agentCollider = GetComponent<Collider2D>();
@@ -17,6 +23,5 @@ public class FlockAgent : MonoBehaviour
     {
         transform.up = velocity;
         transform.position += (Vector3)velocity * Time.deltaTime;
-
     }
 }
